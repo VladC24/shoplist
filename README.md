@@ -3,7 +3,7 @@
 As a Merchant, the user can add new and remove products and set time-bound offers with descriptions, which expire automatically or can manually cancel them.
 As a Customer, the user can see the product list, with the offers visible for certain products. They will be able to add products to the Basket. 
 
-Instructions: 
+## Instructions: 
 - install sbt
 - clone this repo
 - in the terminal, run `sbt run` to start the local server
