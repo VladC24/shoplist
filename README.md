@@ -1,6 +1,7 @@
 # Shoplist - a simple Scala Play application, tested with ScalaTest.
 
 As a Merchant, the user can add new and remove products and set time-bound offers with descriptions, which expire automatically or can manually cancel them.
+
 As a Customer, the user can see the product list, with the offers visible for certain products. They will be able to add products to the Basket. 
 
 ## Instructions: 
