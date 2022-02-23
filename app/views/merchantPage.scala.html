@@ -1,0 +1,30 @@
+@(shopList: List[(String, Int)])(implicit request: RequestHeader)
+@import helper._
+
+@main("Merchant Page") {
+    <div style="text-align: center;">
+        <h1>Welcome to the Merchant Page</h1>
+        <h2>SHOP LIST</h2>
+        <h2>@shopList.size products in the Inventory</h2>
+        <ul>
+            @shopList.map { product =>
+            <li style="display: block;">
+                @form(routes.ShopController.removeProduct(product._1, product._2)) {
+                    <div>
+                        @product._1 - £ @product._2
+                        <input style="margin-left: 40px" type="submit" value="Delete">
+                    </div>
+                }
+            </li>
+            }
+        </ul>
+
+        <h2>Add a new product</h2>
+        <form method="post" action="@routes.ShopController.addProducts">
+            <input type="text" name="newProduct" placeholder="Enter new product">
+            <input type="number" name="Price" placeholder="Enter price" style="width: 6em;">
+            <input type="submit" value="Add Product">
+        </form>
+
+    </div>
+}

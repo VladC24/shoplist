@@ -1,0 +1,9 @@
+@()
+
+@main("Welcome to The Shop") {
+  <div style="text-align: center">
+    <h1>Welcome to The Shop!</h1>
+    <input type="submit" onclick="location.href='@controllers.routes.HomeController.customer';" value="I'm a Customer" />
+    <input type="submit" onclick="location.href='@controllers.routes.HomeController.merchant';" value="I'm a Merchant" />
+  </div>
+}

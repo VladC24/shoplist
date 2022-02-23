@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# Home page
+GET     /                                                   controllers.HomeController.index()
+POST    /merchantPage                                       controllers.HomeController.merchant
+POST    /customerPage                                       controllers.HomeController.customer
+
+# GET   /productArgs                                        controllers.HomeController.product(description, id: Int)
+# GET     /product/:description/:id                         controllers.HomeController.product(description, id: Int)
+# GET   /productRE/$product<[a-z]{2}\d\d>/:id               controllers.HomeController.product(description, id: Int)
+
+# Shop pages
+GET     /merchantPage                                       controllers.ShopController.merchantPage
+GET     /customerPage                                       controllers.ShopController.customerPage
+POST    /addProducts                                        controllers.ShopController.addProducts
+POST    /merchantPage/:label/delete                         controllers.ShopController.removeProduct(label: String, price: Int)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file                       controllers.Assets.versioned(path="/public", file: Asset)
