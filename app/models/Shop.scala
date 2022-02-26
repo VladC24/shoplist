@@ -2,7 +2,7 @@ package models
 
 import scala.collection.mutable
 
-object Merchant {
+object Shop {
 
   private var productList = mutable.Seq[List[(String, Int)]](List.empty).head
 
@@ -18,6 +18,6 @@ object Merchant {
     productList = productList.filterNot(l => l == (label, price))
   }
 
-  def createOffer(product: String, offer: Int): Boolean = ???
+  def createOffer(product: String, price: Int) = ???
 
 }

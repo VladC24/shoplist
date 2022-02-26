@@ -1,6 +1,6 @@
 package controllers
 
-import models.Merchant
+import models.Shop
 import play.api.mvc.{AbstractController, ControllerComponents}
 
 import javax.inject._
@@ -9,12 +9,12 @@ import javax.inject._
 class ShopController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   def merchantPage = Action { implicit request =>
-    val productList = Merchant.getProductList
+    val productList = Shop.getProductList
     Ok(views.html.merchantPage(productList))
   }
 
   def customerPage = Action {
-    val productList = Merchant.getProductList
+    val productList = Shop.getProductList
     Ok(views.html.customerPage(productList))
   }
 
@@ -22,13 +22,18 @@ class ShopController @Inject()(cc: ControllerComponents) extends AbstractControl
     request.body.asFormUrlEncoded.map {  args=>
       val product = args("newProduct").head
       val price = args("Price").head.toInt
-      Merchant.addProduct(product, price)
+      Shop.addProduct(product, price)
       Redirect(routes.ShopController.merchantPage)
     }.getOrElse(Redirect(routes.ShopController.merchantPage))
   }
 
   def removeProduct(product: String, price: Int) = Action {
-    Merchant.removeProduct(product, price)
+    Shop.removeProduct(product, price)
     Redirect(routes.ShopController.merchantPage)
+  }
+
+  def buyProduct(product: String, price: Int) = Action {
+    Shop.removeProduct(product, price)
+    Redirect(routes.ShopController.customerPage)
   }
 }

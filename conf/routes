@@ -15,6 +15,7 @@ POST    /customerPage                                       controllers.HomeCont
 # Shop pages
 GET     /merchantPage                                       controllers.ShopController.merchantPage
 GET     /customerPage                                       controllers.ShopController.customerPage
+POST    /customerPage/:label/buy                            controllers.ShopController.buyProduct(label: String, price:Int)
 POST    /addProducts                                        controllers.ShopController.addProducts
 POST    /merchantPage/:label/delete                         controllers.ShopController.removeProduct(label: String, price: Int)
 
