@@ -1,4 +1,4 @@
-@(shopList: List[(String, Int)])
+@(shopList: List[(String, Int, Option[Int], Option[String])])
 @import helper._
 
 @main("Customer Page") {
@@ -10,7 +10,7 @@
         <ul>
             @shopList.map { product =>
             <li style="display: block;">
-                @form(routes.ShopController.buyProduct(product._1, product._2)) {
+                @form(routes.ShopController.buyProduct(product._1, product._2, product._3, product._4)) {
                 <div>
                     @product._1 - £ @product._2
                     <input style="margin-left: 40px" type="submit" value="Buy">

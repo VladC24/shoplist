@@ -1,4 +1,4 @@
-name := """shop-offer"""
+name := """shoplist"""
 organization := "com.example"
 
 version := "1.0-SNAPSHOT"
@@ -7,10 +7,16 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.13.8"
 
-libraryDependencies += guice
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
-libraryDependencies += filters
-libraryDependencies ++= Seq(evolutions, jdbc)
+libraryDependencies ++= Seq(
+  evolutions,
+  jdbc,
+  guice,
+  "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
+  filters,
+  "org.postgresql" % "postgresql" % "42.2.16",
+  javaJdbc,
+  javaWs
+)
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "com.example.controllers._"

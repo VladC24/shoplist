@@ -1,4 +1,4 @@
-@(shopList: List[(String, Int)])(implicit request: RequestHeader)
+@(shopList: List[(String, Int, Option[Int], Option[String])])(implicit request: RequestHeader)
 @import helper._
 
 @main("Merchant Page") {
@@ -9,12 +9,12 @@
         <ul>
             @shopList.map { product =>
             <li style="display: block;">
-                @form(routes.ShopController.removeProduct(product._1, product._2)) {
-                    <div>
-                        @product._1 - £ @product._2
+                <div>
+                    @form(routes.ShopController.removeProduct(product._1, product._2, product._3, product._4)) {
+                            @product._1 - £ @product._2 - New Offer: @product._3 - Offer Description: @product._4
                         <input style="margin-left: 40px" type="submit" value="Delete">
-                    </div>
-                }
+                    }
+                </div>
             </li>
             }
         </ul>
@@ -25,6 +25,14 @@
             <input type="number" name="Price" placeholder="Enter price" style="width: 6em;">
             <input type="submit" value="Add Product">
         </form>
+
+        <h2>Add a new offer</h2>
+        @form(routes.ShopController.newOffer) {
+            <input type="text" name="productLabel" placeholder="Enter product name">
+            <input type="text" name="newOffer" placeholder="Enter offer">
+            <input type="text" name="offerDescription" placeholder="Enter offer description">
+            <input style="margin-left: 40px" type="submit" value="Apply Offer">
+        }
 
     </div>
 }

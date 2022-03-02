@@ -9,15 +9,16 @@ POST    /merchantPage                                       controllers.HomeCont
 POST    /customerPage                                       controllers.HomeController.customer
 
 # GET   /productArgs                                        controllers.HomeController.product(description, id: Int)
-# GET     /product/:description/:id                         controllers.HomeController.product(description, id: Int)
+# GET   /product/:description/:id                           controllers.HomeController.product(description, id: Int)
 # GET   /productRE/$product<[a-z]{2}\d\d>/:id               controllers.HomeController.product(description, id: Int)
 
 # Shop pages
 GET     /merchantPage                                       controllers.ShopController.merchantPage
 GET     /customerPage                                       controllers.ShopController.customerPage
-POST    /customerPage/:label/buy                            controllers.ShopController.buyProduct(label: String, price:Int)
+POST    /customerPage/:label/buy                            controllers.ShopController.buyProduct(label: String, price:Int, offer: Option[Int], description: Option[String])
 POST    /addProducts                                        controllers.ShopController.addProducts
-POST    /merchantPage/:label/delete                         controllers.ShopController.removeProduct(label: String, price: Int)
+POST    /merchantPage/:label/delete                         controllers.ShopController.removeProduct(label: String, price: Int, offer: Option[Int], description: Option[String])
+POST    /merchantPage/                                      controllers.ShopController.newOffer
 
 
 # Map static resources from the /public folder to the /assets URL path
